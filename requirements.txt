@@ -1,2 +1,4 @@
 jenkinsapi
 python-jenkins
+pyquery
+pendulum
