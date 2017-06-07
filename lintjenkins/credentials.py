@@ -31,7 +31,7 @@ class SvnCredentialManager(object):
 
     def _get_svn_md5(self, svn):
         m = hashlib.md5()
-        m.update(svn)
+        m.update(svn.encode('utf-8'))
         return m.hexdigest()
 
     def _get_or_create_svn_credential(self, svn, username, password):
