@@ -77,6 +77,16 @@ class LintJenkins(object):
         pylint	845 (+6)	71 (+1)
         这里只考虑pylint一种检查,如果是多种检查的话应该就需要修改代码了.
         """
+        def get_td_value(td_element):
+            """
+            一般的值都是为<td>666</td>,当有颜色时(比如警格个数变化)会多一个<span>子元素.
+            """
+            try:
+                text = td_element.find('span').text.strip()
+            except:
+                text = td_element.text.strip()
+            return int(text.split("(")[0].strip())
+
         url = urljoin(self.jenkins_url,
                       "job/{job_name}/{build_no}/violations/".format(
                           job_name=job_name,
@@ -88,11 +98,9 @@ class LintJenkins(object):
         td_elements = d(
             "#main-panel > table:nth-child(3) > tbody > tr:nth-child(2) td")
 
-        violation = td_elements[1].find('span').text.strip()
-        files_in_violation = td_elements[2].find('span').text.strip()
         return {
-            'violation_num': int(violation.split("(")[0].strip()),
-            'violation_file_num': int(files_in_violation.split("(")[0].strip())
+            'violation_num': get_td_value(td_elements[1]),
+            'violation_file_num': get_td_value(td_elements[2])
         }
 
     def get_build_info(self, job_name, build_no):
@@ -108,7 +116,7 @@ class LintJenkins(object):
 
         # 1. 基础构建信息
         build_info = {
-            'datetime':  pendulum.from_timestamp(job_build_info['timestamp'], 'Asia/Shanghai').to_datetime_string(),
+            'datetime':  pendulum.from_timestamp(job_build_info['timestamp'] / 1000, 'Asia/Shanghai').to_datetime_string(),
             'duration': job_build_info['duration'] / 1000,
             'result': job_build_info['result'],
             'revisions': job_build_info['revisions'],
@@ -124,7 +132,7 @@ class LintJenkins(object):
                 'author': item['author']['fullName'],
                 'revision': item['revision'],
                 'msg': item['msg'],
-                'datetime': pendulum.from_timestamp(item['timestamp'], 'Asia/Shanghai').to_datetime_string(),
+                'datetime': pendulum.from_timestamp(item['timestamp'] / 1000, 'Asia/Shanghai').to_datetime_string(),
                 'paths': item['paths']
             })
 
