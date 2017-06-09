@@ -46,7 +46,7 @@ fi
 source /opt/env/$JOB_NAME/bin/activate
 pip install pylint
 pip install pylint-django
-pip install ${WORKSPACE}/requirements.text
+pip install ${WORKSPACE}/requirements.txt
 root_package_file=&quot;${WORKSPACE}/__init__.py&quot;
 if [ ! -f $root_package_file ]; then
     touch $root_package_file
