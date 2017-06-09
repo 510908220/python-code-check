@@ -119,7 +119,7 @@ class LintJenkins(object):
             'datetime':  pendulum.from_timestamp(job_build_info['timestamp'] / 1000, 'Asia/Shanghai').to_datetime_string(),
             'duration': job_build_info['duration'] / 1000,
             'result': job_build_info['result'],
-            'revisions': job_build_info['revisions'],
+            'revisions': job_build_info['changeSet']['revisions'],
             'commits': [],
             'violation_info': {
 
@@ -127,7 +127,7 @@ class LintJenkins(object):
         }
 
         # 2. 开发者提交信息
-        for item in job_build_info['items']:
+        for item in job_build_info['changeSet']['items']:
             build_info['commits'].append({
                 'author': item['author']['fullName'],
                 'revision': item['revision'],
