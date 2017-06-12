@@ -67,6 +67,7 @@ for number in numbers:
         }
     ],
     "datetime": "2017-06-12 09:55:13",
+    "result_url":'http://x.x.x.x:8080/job/job_name/7/violations/'
     "result": "UNSTABLE",
     "duration": 49,
     "revisions": [
@@ -86,6 +87,7 @@ for number in numbers:
 | datetime                          | 触发构建时间                                  |
 | duration                          | 任务持续时间,即代码检查耗时                          |
 | result                            | 检查结果,取值为: FAILURE、UNSTABLE、SUCCESS、null |
+| result_url                        | 检查结果详细页面,可以看到每一个被检查文件的变化等.              |
 | revisions.module                  | svn地址                                   |
 | revisions.revision                | svn分支版本号                                |
 | commits.msg                       | 本次提交信息                                  |
