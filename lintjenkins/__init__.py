@@ -126,7 +126,13 @@ class LintJenkins(object):
             'commits': [],
             'violation_info': {
 
-            }
+            },
+            'result_url': urljoin(
+                self.jenkins_url,
+                "job/{job_name}/{build_no}/violations/".format(
+                    job_name=job_name,
+                    build_no=build_no)
+            )
         }
 
         # 2. 开发者提交信息
