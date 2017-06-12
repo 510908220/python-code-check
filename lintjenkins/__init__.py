@@ -65,6 +65,12 @@ class LintJenkins(object):
         self.jenkins_server.create_job(
             job_name, template.JOB_CONFIG_PYLINT % ("", svn, credential_id))
 
+    def delete_job(self, job_name):
+        # step1: 确保job不存在
+        if self.jenkins_server.job_exists(job_name):
+            raise LintJobExistException("lint job has exist")
+        self.jenkins_server.delete_job(job_name)
+
     def get_build_numbers(self, job_name):
         """
          以后需要获取全部job构建号.
