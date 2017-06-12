@@ -2,8 +2,11 @@
 
 
 import pendulum
+try:
+    from urllib.parse import urljoin
+except:
+    from urlparse import urljoin
 
-from urllib.parse import urljoin
 from pyquery import PyQuery as pq
 import jenkins
 
