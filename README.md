@@ -19,7 +19,7 @@
 
 
 ## 例子
-#### step1:创建 检查的job
+#### 创建检查的支持pylint的job
 ```python
 import lintjenkins
 lj = LintJenkins('jenkins_url', username='',
@@ -27,5 +27,80 @@ lj = LintJenkins('jenkins_url', username='',
 lj.add_job('svn_url',
            'username', 'password', job_name='xxx')
 ```
+
+#### 获取代码检查结果
+```python
+lj = LintJenkins('jenkins_url', username='',
+                password='')
+
+numbers = lj.get_build_numbers('job_name') # 全部的任务构建号
+for number in numbers:
+    try:
+        print(lj.get_build_info('job_name',number))
+    except Exception as e:
+        print('bad number:', number,e)
+```
+
+获取一次`number`检查结果格式为:
+```json
+{
+    "violation_info": {
+        "violation_num": 1844,
+        "violation_file_num": 75
+    },
+    "commits": [
+        {
+            "msg": "svn提交信息",
+            "paths": [
+                {
+                    "editType": "add",
+                    "file": "新增的文件"
+                },
+                {
+                    "editType": "edit",
+                    "file": "编辑的文件"
+                }
+            ],
+            "revision": 18830,
+            "datetime": "2017-06-12 09:44:38",
+            "author": "huzhongzhong"
+        }
+    ],
+    "datetime": "2017-06-12 09:55:13",
+    "result": "UNSTABLE",
+    "duration": 49,
+    "revisions": [
+        {
+            "module": "svn地址",
+            "revision": 18830
+        }
+    ]
+}
+```
+各个字段说明:
+
+| 字段                                | 含义                                      |
+| --------------------------------- | --------------------------------------- |
+| violation_info.violation_num      | pylint 告警数(高、中、低之和)                     |
+| violation_info.violation_file_num | pylint检查的文件个数                           |
+| datetime                          | 触发构建时间                                  |
+| duration                          | 任务持续时间,即代码检查耗时                          |
+| result                            | 检查结果,取值为: FAILURE、UNSTABLE、SUCCESS、null |
+| revisions.module                  | svn地址                                   |
+| revisions.revision                | svn分支版本号                                |
+| commits.msg                       | 本次提交信息                                  |
+| commits.paths                     | 修改文件信息(修改类型、文件)                         |
+| commits.revision                  | 本次修改分支号                                 |
+| commits.author                    | 提交者                                     |
+| commits.datetime                  | 提交日期                                    |
+
+
+
+## 后续
+目前已经可以通过命令行去创建一个支持pylint检查的job,以及获取每一次检查的结果(告警数等). 可以基于此实现一个代码检查系统(web版).
+
+## 参考
+- https://github.com/pycontribs/jenkinsapi/tree/master/examples/how_to
+
 
 
