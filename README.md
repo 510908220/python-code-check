@@ -99,7 +99,7 @@ for number in numbers:
 
 
 ## 后续
-目前已经可以通过命令行去创建一个支持pylint检查的job,以及获取每一次检查的结果(告警数等). 可以基于此实现一个代码检查系统(web版).
+目前已经可以通过命令行去创建一个支持pylint检查的job,以及获取每一次检查的结果(告警数等). 可以基于此实现一个代码检查系统(web版). 
 
 ## 参考
 - https://github.com/pycontribs/jenkinsapi/tree/master/examples/how_to
