@@ -2,12 +2,14 @@ web:
   build: .
   environment:
    - DEBUG=True
+   - DB_HOST=192.168.0.88
+   - DB_PORT=32768
    - DB_NAME=lol
    - DB_PASSWORD=asheashe
   volumes: 
    - ./src:/docker/src/
   ports: 
    - "80:80"
-  external_links: 
-   - db
+  # external_links: 
+  #  - db
   command: bash -c "python /docker/src/updatedb.py &&  supervisord -n"

@@ -16,3 +16,5 @@
 
 
 
+采用这种方式
+docker run --rm -it sentry-onpremise upgrade
