@@ -1,10 +1,2 @@
-django
-djangorestframework
-markdown
-django-filter
-uwsgi
-MySQL-python
-mkdocs
-docopt
+-r base.txt
 ipython
-django-extensions

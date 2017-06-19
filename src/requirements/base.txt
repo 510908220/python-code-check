@@ -1,0 +1,11 @@
+django
+djangorestframework
+markdown
+django-filter
+uwsgi
+MySQL-python
+mkdocs
+docopt
+django-q
+django-extensions
+django-silk

@@ -22,3 +22,4 @@ urlpatterns = [
     url(r'^api/token/', obtain_auth_token, name='api-token'),
     url(r'^api/', include(router.urls))
 ]
+urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
