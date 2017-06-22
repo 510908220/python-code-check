@@ -13,8 +13,8 @@ ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 def wait_db_ok():
     def test_db():
-        db = MySQLdb.connect("db", "root", os.environ[
-                             'DB_PASSWORD'], os.environ['DB_NAME'])
+        db = MySQLdb.connect(os.environ['DB_HOST'],  "root", os.environ[
+                             'DB_PASSWORD'], os.environ['DB_NAME'], int(os.environ['DB_PORT']))
         cursor = db.cursor()
         cursor.execute("SELECT VERSION()")
         data = cursor.fetchone()
