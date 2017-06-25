@@ -9,3 +9,4 @@ docopt
 django-q
 django-extensions
 django-silk
+lintjenkins

@@ -49,7 +49,11 @@ MIDDLEWARE = [
 ]
 # SILKY_AUTHENTICATION = True  # User must login
 # SILKY_AUTHORISATION = True  # User must have permissions
-SILKY_PERMISSIONS = lambda user: user.is_superuser
+
+
+def SILKY_PERMISSIONS(user): return user.is_superuser
+
+
 SILKY_META = True
 SILKY_PYTHON_PROFILER = True
 ROOT_URLCONF = 'pylinter.urls'
@@ -127,6 +131,11 @@ DATABASES = {
         'TEST': {'CHARSET': 'UTF8'}
     }
 }
+
+# jenkins config
+JENKINS_URL = os.environ['JENKINS_URL']
+JENKINS_USER = os.environ['JENKINS_USER']
+JENKINS_TOKEN = os.environ['JENKINS_TOKEN']
 
 LOG_DIR = os.path.join(BASE_DIR, "log")
 
