@@ -3,6 +3,7 @@
 
 import subprocess
 import os
+import sys
 import MySQLdb
 import time
 import traceback

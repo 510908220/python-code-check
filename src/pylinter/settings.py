@@ -35,17 +35,23 @@ INSTALLED_APPS = [
     'django_q',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'app'
 ]
 
 MIDDLEWARE = [
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'silk.middleware.SilkyMiddleware'
 ]
-
+# SILKY_AUTHENTICATION = True  # User must login
+# SILKY_AUTHORISATION = True  # User must have permissions
+SILKY_PERMISSIONS = lambda user: user.is_superuser
+SILKY_META = True
+SILKY_PYTHON_PROFILER = True
 ROOT_URLCONF = 'pylinter.urls'
 
 TEMPLATES = [
@@ -106,7 +112,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
-DEBUG = False
+DEBUG = eval(os.environ['DEBUG'])
 
 ALLOWED_HOSTS = ['*']
 
