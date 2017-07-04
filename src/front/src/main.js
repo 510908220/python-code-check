@@ -1,66 +1,52 @@
-// Import System requirements
+/**
+ * Created by zzmhot on 2017/3/23.
+ *
+ * 主程序入口
+ *
+ * @author: zzmhot
+ * @github: https://github.com/zzmhot
+ * @email: zzmhot@163.com
+ * @Date: 2017/3/23 18:19
+ * @Copyright(©) 2017 by zzmhot.
+ *
+ */
+
+//导入样式
+import 'normalize.css'
+import 'font-awesome/scss/font-awesome.scss'
+import 'element-ui/lib/theme-default/index.css'
+//导入Vue框架
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+//导入element组件
+import ElementUI from 'element-ui'
+//导入组件
+import router from './router'
+//导入状态管理器
+import store from 'store'
+//导入请求框架
+import api from './api'
+//导入自定义插件
+import Plugins from 'plugins'
+//导入主视图文件
+import App from './App'
 
-import { sync } from 'vuex-router-sync'
-import routes from './routes'
-import store from './store'
+//使用element-ui
+Vue.use(ElementUI)
 
-// Import Helpers for filters
-import { domain, count, prettyDate, pluralize } from './filters'
+//使用自定义插件
+Vue.use(Plugins)
 
-// Import Views - Top level
-import AppView from './components/App.vue'
+//使用api
+Vue.use(api)
 
-// Import Install and register helper items
-Vue.filter('count', count)
-Vue.filter('domain', domain)
-Vue.filter('prettyDate', prettyDate)
-Vue.filter('pluralize', pluralize)
+//发布后是否显示提示
+Vue.config.productionTip = false
 
-Vue.use(VueRouter)
+//是否开启工具调试
+Vue.config.devtools = process.env.NODE_ENV === 'development'
 
-// Routing logic
-var router = new VueRouter({
-  routes: routes,
-  mode: 'history',
-  scrollBehavior: function (to, from, savedPosition) {
-    return savedPosition || { x: 0, y: 0 }
-  }
-})
-
-// Some middleware to help us ensure the user is authenticated.
-router.beforeEach((to, from, next) => {
-  // window.console.log('Transition', transition)
-  if (to.auth && (to.router.app.$store.state.token === 'null')) {
-    window.console.log('Not authenticated')
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath }
-    })
-  } else {
-    next()
-  }
-})
-
-sync(store, router)
-
-// Start out app!
-// eslint-disable-next-line no-new
 new Vue({
-  el: '#root',
-  router: router,
-  store: store,
-  render: h => h(AppView)
-})
-
-// Check local storage to handle refreshes
-if (window.localStorage) {
-  var localUserString = window.localStorage.getItem('user') || 'null'
-  var localUser = JSON.parse(localUserString)
-
-  if (localUser && store.state.user !== localUser) {
-    store.commit('SET_USER', localUser)
-    store.commit('SET_TOKEN', window.localStorage.getItem('token'))
-  }
-}
+  router,
+  store,
+  ...App
+}).$mount('mainbody')

@@ -14,7 +14,7 @@ class Job(models.Model):
     class Meta:
         db_table = 'jobs'
 
-    name = models.TextField(unique=True)
+    name = models.CharField(unique=True, max_length=250)
     description = models.TextField(blank=True, default='')
     svn_url = models.TextField()
     svn_username = models.TextField(blank=True, default='')
@@ -34,43 +34,7 @@ class Build(models.Model):
     number = models.IntegerField()
     job = models.ForeignKey(Job, related_name="builds")
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
     result = models.TextField(default="")
 
     def __str__(self):
         return "{0}:{1}".format(self.job.name, self.number)
-
-
-class Sprint(models.Model):
-    name = models.CharField(max_length=100, blank=True, default='')
-    description = models.TextField(blank=True, default='')
-    end = models.DateField(unique=True)
-
-    def __str__(self):
-        return self.name or "Sprint ending %s" % self.end
-
-
-class Task(models.Model):
-    STATUS_TODO = 1
-    STATUS_IN_PROGRESS = 2
-    STATUS_TESTING = 3
-    STATUS_DONE = 4
-
-    STATUS_CHOICES = (
-        (STATUS_TODO, "Not Started"),
-        (STATUS_IN_PROGRESS, "In Progress"),
-        (STATUS_TESTING, "Testing"),
-        (STATUS_DONE, "Done"),
-    )
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True, default='')
-    sprint = models.ForeignKey(Sprint, blank=True, null=True)
-    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=STATUS_TODO)
-    order = models.SmallIntegerField(default=0)
-    assigned = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
-    started = models.DateField(blank=True, null=True)
-    due = models.DateField(blank=True, null=True)
-    completed = models.DateField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
