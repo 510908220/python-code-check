@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center">Settings</h1>
+    <h1 class="text-center">告警高中低范围，以选用不同图标</h1>
     <section class="content">
       <div class="row">
         <div class="col-md-12">
