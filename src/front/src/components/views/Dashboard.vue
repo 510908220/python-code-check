@@ -5,11 +5,13 @@
     <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-
+          <span class="info-box-icon bg-aqua">
+            <i class="ion ion-ios-gear-outline"></i>
+          </span>
+  
           <div class="info-box-content">
-            <span class="info-box-text">CPU Traffic</span>
-            <span class="info-box-number">90<small>%</small></span>
+            <span class="info-box-text">告警</span>
+            <span class="info-box-number">{{violation_num}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -18,28 +20,32 @@
       <!-- /.col -->
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-
+          <span class="info-box-icon bg-red">
+            <i class="fa fa-google-plus"></i>
+          </span>
+  
           <div class="info-box-content">
-            <span class="info-box-text">Likes</span>
-            <span class="info-box-number">41,410</span>
+            <span class="info-box-text">新增告警</span>
+            <span class="info-box-number">{{violation_num_add}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
         <!-- /.info-box -->
       </div>
       <!-- /.col -->
-
+  
       <!-- fix for small devices only -->
       <div class="clearfix visible-sm-block"></div>
-
+  
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
+          <span class="info-box-icon bg-green">
+            <i class="ion ion-ios-cart-outline"></i>
+          </span>
+  
           <div class="info-box-content">
-            <span class="info-box-text">Sales</span>
-            <span class="info-box-number">760</span>
+            <span class="info-box-text">文件数</span>
+            <span class="info-box-number">{{violation_file_num}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -48,11 +54,13 @@
       <!-- /.col -->
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
+          <span class="info-box-icon bg-yellow">
+            <i class="ion ion-ios-people-outline"></i>
+          </span>
+  
           <div class="info-box-content">
-            <span class="info-box-text">New Members</span>
-            <span class="info-box-number">2,000</span>
+            <span class="info-box-text">新增文件</span>
+            <span class="info-box-number">{{violation_file_num_add}}</span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -61,105 +69,28 @@
       <!-- /.col -->
     </div>
     <!-- /.row -->
-
+  
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title"></h3>
           <div class="box-body">
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-sm-12 col-xs-12">
               <p class="text-center">
-                <strong>Web Traffic Overview</strong>
+                <strong>代码趋势</strong>
               </p>
-              <canvas id="trafficBar" ></canvas>
-            </div>
-            <hr class="visible-xs-block">
-            <div class="col-sm-6 col-xs-12">
-              <p class="text-center">
-                <strong>Language Overview</strong>
-              </p>
-              <canvas id="languagePie"></canvas>
+              <canvas id="trafficBar"></canvas>
             </div>
           </div>
         </div>
-        <small class="space"><b>Pro Tip</b> Don"t forget to star us on github!</small>
       </div>
     </div>
     <!-- /.row -->
-
+  
     <!-- Main row -->
     <div class="row">
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-yellow">
-          <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">Inventory</span>
-            <span class="info-box-number">5,200</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
-            </div>
-                <span class="progress-description">
-                  50% Increase
-                </span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-green">
-          <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">Mentions</span>
-            <span class="info-box-number">92,050</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 20%"></div>
-            </div>
-                <span class="progress-description">
-                  20% Increase
-                </span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-red">
-          <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">Downloads</span>
-            <span class="info-box-number">114,381</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 70%"></div>
-            </div>
-                <span class="progress-description">
-                  70% Increase
-                </span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box bg-aqua">
-          <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">Direct Messages</span>
-            <span class="info-box-number">163,921</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 40%"></div>
-            </div>
-                <span class="progress-description">
-                  40% Increase
-                </span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
+      <div>
+        <vue-good-table :defaultSortBy="{field: 'number', type: 'desc'}" title="" :columns="columns" :rows="rows" :paginate="true" :lineNumbers="true" />
       </div>
     </div>
     <!-- /.row -->
@@ -169,92 +100,115 @@
 
 <script>
 import Chart from 'chart.js'
+import axios from 'axios'
 
 export default {
   data () {
     return {
-      generateRandomNumbers (numbers, max, min) {
-        var a = []
-        for (var i = 0; i < numbers; i++) {
-          a.push(Math.floor(Math.random() * (max - min + 1)) + max)
+      statistic_url: 'http://192.168.0.88/api/statistics/',
+      response: null,
+      violation_num: 0,
+      violation_num_add: 0,
+      violation_file_num: 0,
+      violation_file_num_add: 0,
+      columns: [
+        {
+          label: '构建号',
+          field: 'number',
+          type: 'number',
+          html: false
+        },
+        {
+          label: '告警数',
+          field: 'violation_num',
+          type: 'number'
+        },
+        {
+          label: '新增告警数',
+          field: 'violation_num_add',
+          type: 'number'
+        },
+        {
+          label: '文件数',
+          field: 'violation_file_num',
+          type: 'number'
+        },
+        {
+          label: '新文件数',
+          field: 'violation_file_num_add',
+          type: 'number'
+        },
+
+        {
+          label: '构建时间',
+          field: 'created',
+          type: 'date',
+          inputFormat: 'YYYYMMDD',
+          outputFormat: 'MMM Do YY'
         }
-        return a
-      }
+      ],
+      rows: []
     }
   },
-  computed: {
-    coPilotNumbers () {
-      return this.generateRandomNumbers(12, 1000000, 10000)
-    },
-    personalNumbers () {
-      return this.generateRandomNumbers(12, 1000000, 10000)
-    },
-    isMobile () {
-      return (window.innerWidth <= 800 && window.innerHeight <= 600)
-    }
-  },
+  computed: {},
   mounted () {
     this.$nextTick(() => {
-      var ctx = document.getElementById('trafficBar').getContext('2d')
-      var config = {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-          datasets: [{
-            label: 'CoPilot',
-            fill: false,
-            borderColor: '#284184',
-            pointBackgroundColor: '#284184',
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: this.coPilotNumbers
-          }, {
-            label: 'Personal Site',
-            borderColor: '#4BC0C0',
-            pointBackgroundColor: '#4BC0C0',
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            data: this.personalNumbers
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: !this.isMobile,
-          legend: {
-            position: 'bottom',
-            display: true
-          },
-          tooltips: {
-            mode: 'label',
-            xPadding: 10,
-            yPadding: 10,
-            bodySpacing: 10
+      axios.get(this.statistic_url + this.$route.query.jobId + '/')
+        .then(response => {
+          if (response.status !== 200) {
+            this.error = response.statusText
+            return
           }
-        }
-      }
+          this.response = response.data
+          this.rows = this.response.rows
+          this.violation_num = this.response.violation_num
+          this.violation_num_add = this.response.violation_num_add
+          this.violation_file_num = this.response.violation_file_num
+          this.violation_file_num_add = this.response.violation_file_num_add
 
-      new Chart(ctx, config) // eslint-disable-line no-new
-
-      var pieChartCanvas = document.getElementById('languagePie').getContext('2d')
-      var pieConfig = {
-        type: 'pie',
-        data: {
-          labels: ['HTML', 'JavaScript', 'CSS'],
-          datasets: [{
-            data: [56.6, 37.7, 4.1],
-            backgroundColor: ['#00a65a', '#f39c12', '#00c0ef'],
-            hoverBackgroundColor: ['#00a65a', '#f39c12', '#00c0ef']
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: !this.isMobile,
-          legend: {
-            position: 'bottom',
-            display: true
+          var ctx = document.getElementById('trafficBar').getContext('2d')
+          var config = {
+            type: 'line',
+            data: {
+              labels: this.response.charts.labels,
+              datasets: [{
+                label: 'Violation Num',
+                fill: false,
+                borderColor: '#284184',
+                pointBackgroundColor: '#284184',
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                data: this.response.charts.violation_nums
+              }, {
+                label: 'Violation File Num',
+                borderColor: '#4BC0C0',
+                pointBackgroundColor: '#4BC0C0',
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                data: this.response.charts.violation_file_nums
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: !this.isMobile,
+              legend: {
+                position: 'bottom',
+                display: true
+              },
+              tooltips: {
+                mode: 'label',
+                xPadding: 10,
+                yPadding: 10,
+                bodySpacing: 10
+              }
+            }
           }
-        }
-      }
 
-      new Chart(pieChartCanvas, pieConfig) // eslint-disable-line no-new
+          new Chart(ctx, config) // eslint-disable-line no-new
+        })
+        .catch(error => {
+          // Request failed.
+          console.log('error', error.response)
+          this.error = error.response.statusText
+        })
     })
   }
 }
@@ -263,11 +217,13 @@ export default {
 .info-box {
   cursor: pointer;
 }
+
 .info-box-content {
   text-align: center;
   vertical-align: middle;
   display: inherit;
 }
+
 .fullCanvas {
   width: 100%;
 }

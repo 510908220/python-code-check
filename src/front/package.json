@@ -30,7 +30,9 @@
     "vue-resource": "^1.0.3",
     "vue-router": "^2.2.0",
     "vuex": "^2.0.0",
-    "vuex-router-sync": "^4.1.2"
+    "vuex-router-sync": "^4.1.2",
+    "vue-strap":"1.1.37",
+    "vue-good-table":"1.9.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

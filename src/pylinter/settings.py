@@ -31,11 +31,13 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
+    'django.contrib.sessions',
     'silk',
     'django_q',
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'corsheaders',
     'app'
 ]
 
@@ -43,10 +45,14 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'silk.middleware.SilkyMiddleware'
 ]
+CORS_ORIGIN_ALLOW_ALL = True
+
 # SILKY_AUTHENTICATION = True  # User must login
 # SILKY_AUTHORISATION = True  # User must have permissions
 

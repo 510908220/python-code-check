@@ -9,7 +9,7 @@ import TasksView from './components/views/Tasks.vue'
 import SettingView from './components/views/Setting.vue'
 import AccessView from './components/views/Access.vue'
 import ServerView from './components/views/Server.vue'
-import ReposView from './components/views/Repos.vue'
+import JobView from './components/views/job.vue'
 
 // Routes
 const routes = [
@@ -22,11 +22,17 @@ const routes = [
     component: DashView,
     children: [
       {
-        path: 'dashboard',
-        alias: '',
+        path: 'jobs',
+        component: JobView,
+        name: 'Pylint Job',
+        meta: {description: ''},
+        alias: ''
+      },
+      {
+        path: 'statistics',
         component: DashboardView,
-        name: 'Dashboard',
-        meta: {description: 'Overview of environment'}
+        name: 'Statistics',
+        meta: {description: ''}
       }, {
         path: 'tables',
         component: TablesView,
@@ -52,11 +58,6 @@ const routes = [
         component: ServerView,
         name: 'Servers',
         meta: {description: 'List of our servers'}
-      }, {
-        path: 'repos',
-        component: ReposView,
-        name: 'Repository',
-        meta: {description: 'List of popular javascript repos'}
       }
     ]
   }, {

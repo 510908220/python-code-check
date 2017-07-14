@@ -1045,3 +1045,1399 @@ Traceback (most recent call last):
   File "/usr/lib/python2.7/json/decoder.py", line 384, in raw_decode
     raise ValueError("No JSON object could be decoded")
 ValueError: No JSON object could be decoded
+2017-07-11 14:03:26,524 [uWSGIWorker2Core0:140113957943104] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 42, in list
+    page = self.paginate_queryset(queryset)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/generics.py", line 173, in paginate_queryset
+    return self.paginator.paginate_queryset(queryset, self.request, view=self)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/pagination.py", line 214, in paginate_queryset
+    self.page = paginator.page(page_number)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 57, in page
+    number = self.validate_number(number)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 46, in validate_number
+    if number > self.num_pages:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 91, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 79, in count
+    return self.object_list.count()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 364, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 499, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 480, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/usr/local/lib/python2.7/dist-packages/silk/sql.py", line 45, in execute_sql
+    return self._execute_sql(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 886, in execute_sql
+    raise original_exception
+ProgrammingError: (1146, "Table 'lol.jobs' doesn't exist")
+2017-07-11 14:03:46,123 [uWSGIWorker2Core0:140113957943104] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/builds/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 42, in list
+    page = self.paginate_queryset(queryset)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/generics.py", line 173, in paginate_queryset
+    return self.paginator.paginate_queryset(queryset, self.request, view=self)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/pagination.py", line 214, in paginate_queryset
+    self.page = paginator.page(page_number)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 57, in page
+    number = self.validate_number(number)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 46, in validate_number
+    if number > self.num_pages:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 91, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/paginator.py", line 79, in count
+    return self.object_list.count()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 364, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 499, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 480, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/usr/local/lib/python2.7/dist-packages/silk/sql.py", line 45, in execute_sql
+    return self._execute_sql(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 886, in execute_sql
+    raise original_exception
+ProgrammingError: (1146, "Table 'lol.builds' doesn't exist")
+2017-07-11 14:21:02,661 [uWSGIWorker1Core0:139622222374720] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 501, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/fields.py", line 1754, in to_representation
+    return method(value)
+  File "./app/serializers.py", line 28, in get_violation_info
+    return json.loads(last_build.result).get('violation_info')
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 384, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+2017-07-11 14:30:25,684 [uWSGIWorker1Core0:139798783801152] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 501, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/fields.py", line 1754, in to_representation
+    return method(value)
+  File "./app/serializers.py", line 28, in get_violation_info
+    violation_info = json.loads(last_build.result).get('violation_info')
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 384, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+2017-07-11 14:39:00,862 [uWSGIWorker1Core0:140222253791040] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 501, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/fields.py", line 1753, in to_representation
+    method = getattr(self.parent, self.method_name)
+AttributeError: 'JobSerializer' object has no attribute 'get_violation_file_num'
+2017-07-11 14:56:34,032 [uWSGIWorker1Core0:140222253791040] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 501, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/fields.py", line 1753, in to_representation
+    method = getattr(self.parent, self.method_name)
+AttributeError: 'JobSerializer' object has no attribute 'get_violation_file_num'
+2017-07-11 14:57:40,745 [uWSGIWorker1Core0:140222253791040] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 501, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/fields.py", line 1753, in to_representation
+    method = getattr(self.parent, self.method_name)
+AttributeError: 'JobSerializer' object has no attribute 'get_violation_file_num'
+2017-07-11 15:00:00,291 [uWSGIWorker1Core0:140222253791040] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 501, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/fields.py", line 1753, in to_representation
+    method = getattr(self.parent, self.method_name)
+AttributeError: 'JobSerializer' object has no attribute 'get_violation_file_num'
+2017-07-11 15:01:03,613 [uWSGIWorker4Core0:140368032671552] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 484, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 378, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 364, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 994, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 1093, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'violation_num' was declared on serializer JobSerializer, but has not been included in the 'fields' option.
+2017-07-11 15:01:06,448 [uWSGIWorker1Core0:140368032671552] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 484, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 378, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 364, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 994, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 1093, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'violation_num' was declared on serializer JobSerializer, but has not been included in the 'fields' option.
+2017-07-11 15:30:42,475 [uWSGIWorker1Core0:139857619302208] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 477, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 395, in initial
+    self.check_permissions(request)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 327, in check_permissions
+    for permission in self.get_permissions():
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 274, in get_permissions
+    return [permission() for permission in self.permission_classes]
+TypeError: 'type' object is not iterable
+2017-07-11 15:30:47,105 [uWSGIWorker2Core0:139857619302208] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 477, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 395, in initial
+    self.check_permissions(request)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 327, in check_permissions
+    for permission in self.get_permissions():
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 274, in get_permissions
+    return [permission() for permission in self.permission_classes]
+TypeError: 'type' object is not iterable
+2017-07-11 15:30:47,722 [uWSGIWorker1Core0:139857619302208] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 477, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 395, in initial
+    self.check_permissions(request)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 327, in check_permissions
+    for permission in self.get_permissions():
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 274, in get_permissions
+    return [permission() for permission in self.permission_classes]
+TypeError: 'type' object is not iterable
+2017-07-11 15:30:48,093 [uWSGIWorker2Core0:139857619302208] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 477, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 395, in initial
+    self.check_permissions(request)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 327, in check_permissions
+    for permission in self.get_permissions():
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 274, in get_permissions
+    return [permission() for permission in self.permission_classes]
+TypeError: 'type' object is not iterable
+2017-07-14 13:29:20,622 [uWSGIWorker1Core0:140326370502464] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /silk/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 83, in get
+    c = self._create_context(request)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 62, in _create_context
+    raw_filters = request.session.get(self.filters_key, {})
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 68, in get
+    return self._session.get(key, default)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 38, in load
+    except (self.model.DoesNotExist, SuspiciousOperation) as e:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 29, in model
+    return self.get_model_class()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 24, in get_model_class
+    from django.contrib.sessions.models import Session
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/models.py", line 12, in <module>
+    class Session(AbstractBaseSession):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+2017-07-14 13:30:00,511 [uWSGIWorker1Core0:140326370502464] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /silk/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 83, in get
+    c = self._create_context(request)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 62, in _create_context
+    raw_filters = request.session.get(self.filters_key, {})
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 68, in get
+    return self._session.get(key, default)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 38, in load
+    except (self.model.DoesNotExist, SuspiciousOperation) as e:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 29, in model
+    return self.get_model_class()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 24, in get_model_class
+    from django.contrib.sessions.models import Session
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/models.py", line 12, in <module>
+    class Session(AbstractBaseSession):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+2017-07-14 13:30:14,457 [uWSGIWorker4Core0:140326370502464] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /silk/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 83, in get
+    c = self._create_context(request)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 62, in _create_context
+    raw_filters = request.session.get(self.filters_key, {})
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 68, in get
+    return self._session.get(key, default)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 38, in load
+    except (self.model.DoesNotExist, SuspiciousOperation) as e:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 29, in model
+    return self.get_model_class()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 24, in get_model_class
+    from django.contrib.sessions.models import Session
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/models.py", line 12, in <module>
+    class Session(AbstractBaseSession):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+2017-07-14 13:32:10,223 [uWSGIWorker1Core0:140326370502464] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /silk/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 83, in get
+    c = self._create_context(request)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 62, in _create_context
+    raw_filters = request.session.get(self.filters_key, {})
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 68, in get
+    return self._session.get(key, default)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 38, in load
+    except (self.model.DoesNotExist, SuspiciousOperation) as e:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 29, in model
+    return self.get_model_class()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 24, in get_model_class
+    from django.contrib.sessions.models import Session
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/models.py", line 12, in <module>
+    class Session(AbstractBaseSession):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+2017-07-14 13:32:10,918 [uWSGIWorker4Core0:140326370502464] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /silk/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 83, in get
+    c = self._create_context(request)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 62, in _create_context
+    raw_filters = request.session.get(self.filters_key, {})
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 68, in get
+    return self._session.get(key, default)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 38, in load
+    except (self.model.DoesNotExist, SuspiciousOperation) as e:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 29, in model
+    return self.get_model_class()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 24, in get_model_class
+    from django.contrib.sessions.models import Session
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/models.py", line 12, in <module>
+    class Session(AbstractBaseSession):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+2017-07-14 13:32:11,343 [uWSGIWorker1Core0:140326370502464] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /silk/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 83, in get
+    c = self._create_context(request)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 62, in _create_context
+    raw_filters = request.session.get(self.filters_key, {})
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 68, in get
+    return self._session.get(key, default)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 38, in load
+    except (self.model.DoesNotExist, SuspiciousOperation) as e:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 29, in model
+    return self.get_model_class()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 24, in get_model_class
+    from django.contrib.sessions.models import Session
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/models.py", line 12, in <module>
+    class Session(AbstractBaseSession):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+2017-07-14 13:32:12,062 [uWSGIWorker4Core0:140326370502464] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /silk/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 83, in get
+    c = self._create_context(request)
+  File "/usr/local/lib/python2.7/dist-packages/silk/views/summary.py", line 62, in _create_context
+    raw_filters = request.session.get(self.filters_key, {})
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 68, in get
+    return self._session.get(key, default)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 38, in load
+    except (self.model.DoesNotExist, SuspiciousOperation) as e:
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 29, in model
+    return self.get_model_class()
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/backends/db.py", line 24, in get_model_class
+    from django.contrib.sessions.models import Session
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/sessions/models.py", line 12, in <module>
+    class Session(AbstractBaseSession):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class django.contrib.sessions.models.Session doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+2017-07-14 14:28:14,993 [uWSGIWorker1Core0:139757952087872] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: retrieve() got an unexpected keyword argument 'pk'
+2017-07-14 16:12:01,697 [uWSGIWorker3Core0:139757952087872] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: retrieve() got an unexpected keyword argument 'pk'
+2017-07-14 16:12:43,884 [uWSGIWorker1Core0:139816383903552] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: retrieve() got an unexpected keyword argument 'pk'
+2017-07-14 16:12:45,116 [uWSGIWorker4Core0:139816383903552] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/1/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: retrieve() got an unexpected keyword argument 'pk'
+2017-07-14 16:26:27,114 [uWSGIWorker1Core0:140094546061120] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 16:26:34,539 [uWSGIWorker1Core0:140094546061120] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 16:26:59,886 [uWSGIWorker1Core0:140094546061120] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:02:07,452 [uWSGIWorker2Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:06:46,566 [uWSGIWorker1Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:10:14,318 [uWSGIWorker1Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:14:31,941 [uWSGIWorker2Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:25:27,522 [uWSGIWorker2Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:26:57,263 [uWSGIWorker2Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:26:58,804 [uWSGIWorker1Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:27:00,668 [uWSGIWorker2Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:27:01,511 [uWSGIWorker1Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-14 17:27:02,020 [uWSGIWorker2Core0:139899932329792] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/statistics/undefined/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "./app/views.py", line 74, in retrieve
+    job = get_object_or_404(Job, pk=pk)
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 371, in get
+    clone = self.filter(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'undefined'

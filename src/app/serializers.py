@@ -2,7 +2,7 @@
 
 import json
 
-from datetime import date
+from datetime import date, datetime
 from rest_framework.reverse import reverse
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
@@ -20,12 +20,21 @@ class JobSerializer(serializers.ModelSerializer):
         model = Job
         fields = ('id', 'name', 'description',
                   'svn_url', 'svn_username', 'svn_password',
-                  'recipient', 'links', 'violation_info')
+                  'recipient', 'violation_threshold_num', 'links', 'violation_info')
 
     def get_violation_info(self, obj):
         last_build = obj.builds.last()
+        violation_info = {
+            "violation_file_num": -1,
+            'violation_num': -1,
+            'created': datetime.now()
+        }
         if last_build:
-            return json.loads(last_build.result).get('violation_info')
+            violation_info = json.loads(last_build.result).get('violation_info')
+            violation_info.update({
+                'created': last_build.created
+            })
+        return violation_info
 
     def get_links(self, obj):
         request = self.context['request']

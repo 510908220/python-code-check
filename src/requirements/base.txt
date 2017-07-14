@@ -10,3 +10,4 @@ django-q
 django-extensions
 django-silk
 lintjenkins
+django-cors-headers

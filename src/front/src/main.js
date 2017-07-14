@@ -8,9 +8,12 @@ import store from './store'
 
 // Import Helpers for filters
 import { domain, count, prettyDate, pluralize } from './filters'
-
 // Import Views - Top level
 import AppView from './components/App.vue'
+
+// Table
+import VueGoodTable from 'vue-good-table'
+Vue.use(VueGoodTable)
 
 // Import Install and register helper items
 Vue.filter('count', count)

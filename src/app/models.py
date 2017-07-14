@@ -21,6 +21,7 @@ class Job(models.Model):
     svn_password = models.TextField(blank=True, default='')
 
     recipient = models.TextField()
+    violation_threshold_num = models.IntegerField(default=888)
 
     def __str__(self):
         return self.name

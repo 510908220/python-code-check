@@ -1,45 +1,32 @@
 <template>
   <ul class="sidebar-menu">
-    <li class="header">仪表盘</li>
-    <li class="active pageLink" v-on:click="toggleMenu">
-      <router-link to="/"><i class="fa fa-desktop"></i>
-        <span class="page">Dashboard</span>
-      </router-link>
-    </li>
-    <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/tables"><i class="fa fa-table"></i>
-        <span class="page">Tables</span>
-      </router-link>
-    </li>
-
-
-
     <li class="header">代码检查</li>
     <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/access"><i class="fa fa-book"></i>
-        <span class="page">Access</span>
-      </router-link>
-    </li>
-    <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/server"><i class="fa fa-hdd-o"></i>
-        <span class="page">Server</span>
-      </router-link>
-    </li>
-    <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/repos"><i class="fa fa-heart"></i>
+      <router-link to="/jobs"><i class="fa fa-heart"></i>
         <span class="page">Job</span>
-        <small class="label pull-right bg-green">AJAX</small>
+        <small class="label pull-right bg-green">Pylint</small>
       </router-link>
     </li>
-
-        <li class="header">设置</li>
+      
+    <li class="header">规范</li>
     <li class="pageLink" v-on:click="toggleMenu">
       <router-link to="/setting">
-        <i class="fa fa-cog"></i>
-        <span class="page">Settings</span>
+        <i class="fa fa-book"></i>
+        <span class="page">python-guide</span>
       </router-link>
     </li>
-    
+    <li class="pageLink" v-on:click="toggleMenu">
+      <router-link to="/setting">
+        <i class="fa fa-book"></i>
+        <span class="page">其他guide</span>
+      </router-link>
+    </li>
+    <li class="pageLink" v-on:click="toggleMenu">
+      <router-link to="/setting">
+        <i class="fa fa-book"></i>
+        <span class="page">例子</span>
+      </router-link>
+    </li>
   </ul>
 </template>
 <script>
