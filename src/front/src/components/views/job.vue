@@ -101,7 +101,7 @@
                   </div>
                   <div class="col-sm-4 border-right">
                     <div class="description-block">
-                        <i class="fa fa-play">
+                        <i class="fa fa-eye">
                           <router-link :to="{ name: 'Statistics', query: { jobId: repo.id }}">详细</router-link>
                         </i>
                     </div>

@@ -6,7 +6,7 @@
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
           <span class="info-box-icon bg-aqua">
-            <i class="ion ion-ios-gear-outline"></i>
+            <i class="ion ion-android-notifications"></i>
           </span>
   
           <div class="info-box-content">
@@ -21,7 +21,7 @@
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
           <span class="info-box-icon bg-red">
-            <i class="fa fa-google-plus"></i>
+            <i class="fa ion-android-notifications-none"></i>
           </span>
   
           <div class="info-box-content">
@@ -39,8 +39,8 @@
   
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-          <span class="info-box-icon bg-green">
-            <i class="ion ion-ios-cart-outline"></i>
+          <span class="info-box-icon bg-aqua">
+            <i class="ion ion-document-text"></i>
           </span>
   
           <div class="info-box-content">
@@ -55,7 +55,7 @@
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
           <span class="info-box-icon bg-yellow">
-            <i class="ion ion-ios-people-outline"></i>
+            <i class="ion ion-document"></i>
           </span>
   
           <div class="info-box-content">

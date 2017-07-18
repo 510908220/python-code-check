@@ -2,7 +2,7 @@
   <ul class="sidebar-menu">
     <li class="header">代码检查</li>
     <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/jobs"><i class="fa fa-heart"></i>
+      <router-link to="/jobs"><i class="fa fa-car"></i>
         <span class="page">Job</span>
         <small class="label pull-right bg-green">Pylint</small>
       </router-link>
@@ -17,13 +17,7 @@
     </li>
     <li class="pageLink" v-on:click="toggleMenu">
       <router-link to="/setting">
-        <i class="fa fa-book"></i>
-        <span class="page">其他guide</span>
-      </router-link>
-    </li>
-    <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/setting">
-        <i class="fa fa-book"></i>
+        <i class="fa fa-bug"></i>
         <span class="page">例子</span>
       </router-link>
     </li>
