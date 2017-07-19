@@ -89,7 +89,7 @@
               </div>
               <div class="widget-user-image">
                 <!--v-bind:src-->
-                <img class="img-circle" src="http://www.easyicon.net/api/resizeApi.php?id=1209087&size=72" alt="login Avatar">
+                <img class="img-circle" src="repo.health_url" alt="login Avatar">
               </div>
               <div class="box-footer">
                 <div class="row">
