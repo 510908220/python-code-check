@@ -62,6 +62,18 @@ def SILKY_PERMISSIONS(user): return user.is_superuser
 
 SILKY_META = True
 SILKY_PYTHON_PROFILER = True
+
+# Django Q config
+Q_CLUSTER = {
+    'name': 'DjangORM',
+    'workers': 4,
+    # 'timeout': 90,
+    'retry': 60 * 30,  # 30min 还未执行完就会再次触发任务
+    'queue_limit': 50,
+    'bulk': 10,
+    'orm': 'default'
+}
+
 ROOT_URLCONF = 'pylinter.urls'
 
 TEMPLATES = [
@@ -142,6 +154,7 @@ DATABASES = {
 JENKINS_URL = os.environ['JENKINS_URL']
 JENKINS_USER = os.environ['JENKINS_USER']
 JENKINS_TOKEN = os.environ['JENKINS_TOKEN']
+
 
 LOG_DIR = os.path.join(BASE_DIR, "log")
 

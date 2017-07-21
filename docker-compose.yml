@@ -15,4 +15,4 @@ web:
    - "80:80"
   # external_links: 
   #  - db
-  command: bash -c "python /docker/src/updatedb.py &&  supervisord -n"
+  command: bash -c "cd /docker/src/front/ && cnpm i && npm run build && python /docker/src/updatedb.py &&  supervisord -n"

@@ -89,7 +89,7 @@
               </div>
               <div class="widget-user-image">
                 <!--v-bind:src-->
-                <img class="img-circle" src="repo.health_url" alt="login Avatar">
+                <img class="img-circle" :src="repo.violation_info.health_url" alt="login Avatar">
               </div>
               <div class="box-footer">
                 <div class="row">

@@ -24,7 +24,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 # 安装nodejs
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN sudo apt-get install -y nodejs
+RUN apt-get update && sudo apt-get install -y nodejs
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 # 设置阿里云pypi源,加快下载速度
@@ -45,9 +45,6 @@ COPY ./src/  /docker/src/
 RUN pip install -r /docker/src/requirements/dev.txt
 
 RUN export TERM=xterm # 会出现错误TERM environment variable not set
-
-# nodejs
-RUN cd /docker/src/front && cnpm i && npm run build
 
 # add (the rest of) our code
 WORKDIR /docker/src/

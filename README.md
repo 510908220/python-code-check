@@ -18,3 +18,6 @@
 
 采用这种方式
 docker run --rm -it sentry-onpremise upgrade
+
+Job显示revison吗
+详细里显示代码提交信息吗？

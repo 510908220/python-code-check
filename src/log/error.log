@@ -2441,3 +2441,77 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py", line 966, in get_prep_value
     return int(value)
 ValueError: invalid literal for int() with base 10: 'undefined'
+2017-07-19 11:07:27,965 [uWSGIWorker1Core0:140382943700800] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 484, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 378, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 364, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 1017, in get_fields
+    source, info, model, depth
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 1151, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 1258, in build_unknown_field
+    (field_name, model_class.__name__)
+ImproperlyConfigured: Field name `health_url` is not valid for model `Job`.
+2017-07-19 11:08:03,787 [uWSGIWorker1Core0:139761392965440] [django.request:135] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /api/jobs/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/viewsets.py", line 86, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/mixins.py", line 45, in list
+    return self.get_paginated_response(serializer.data)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/serializers.py", line 501, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/usr/local/lib/python2.7/dist-packages/rest_framework/fields.py", line 1754, in to_representation
+    return method(value)
+  File "./app/serializers.py", line 38, in get_violation_info
+    if violation_info['violation_num'] >= last_build.violation_threshold_num:
+AttributeError: 'Build' object has no attribute 'violation_threshold_num'

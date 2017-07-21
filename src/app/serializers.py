@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
 
 import json
-
 from datetime import date, datetime
-from rest_framework.reverse import reverse
-from rest_framework import serializers
-from django.contrib.auth import get_user_model
 
-from .models import Job, Build
+from django.contrib.auth import get_user_model
+from rest_framework import serializers
+from rest_framework.reverse import reverse
+
+from .models import Build, Job
 
 User = get_user_model()
 
@@ -27,13 +27,23 @@ class JobSerializer(serializers.ModelSerializer):
         violation_info = {
             "violation_file_num": -1,
             'violation_num': -1,
-            'created': datetime.now()
+            'created': datetime.now(),
+            'health_url': '/static/img/rain.png'
         }
-        if last_build:
-            violation_info = json.loads(last_build.result).get('violation_info')
-            violation_info.update({
-                'created': last_build.created
-            })
+        if not last_build:
+            return violation_info
+
+        violation_info = json.loads(last_build.result).get('violation_info')
+        if violation_info['violation_num'] >= obj.violation_threshold_num:
+            health_url = '/static/img/rain.png'
+        else:
+            health_url = '/static/img/sun.png'
+
+        violation_info.update({
+            'created': last_build.created,
+            'health_url': health_url
+        })
+
         return violation_info
 
     def get_links(self, obj):
