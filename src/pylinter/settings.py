@@ -29,6 +29,7 @@ SECRET_KEY = 'o+#(6o=4es2^4u2vh#!mt*i&x20gfp2gn*^lq_%z=7via=tdf2'
 
 INSTALLED_APPS = [
     'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
     'django.contrib.sessions',

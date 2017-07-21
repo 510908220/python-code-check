@@ -11,21 +11,22 @@ from optparse import OptionParser
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 COMMAND_BLACK_LIST = ['__init__']
 
-COMMAND_TEMPLATE = """
+DJANGO_Q_TEMPLATE = """
 [program:{program}]
 command={python} {project_dir}/manage.py {command}
 directory=/
 autostart=true
-autorestart=true
+autorestart=false
 stopasgroup=true
 killasgroup=true
-startretries=3
+startretries=0
 redirect_stderr=true
 stderr_logfile_maxbytes=1MB
 stdout_logfile=/var/log/{program}.log
 stdout_logfile_maxbytes=1MB
 user=root
 """
+
 
 UWSGI_TEMPLATE = """
 [program:app-uwsgi]
@@ -58,12 +59,12 @@ def get_python():
 def make_config():
     supervisor_conf = "/etc/supervisor/conf.d/supervisor-app.conf"
     configs = [UWSGI_TEMPLATE, NGINX_TEMPLATE]
-    for command in get_commands():
-        configs.append(COMMAND_TEMPLATE.format(program=command,
-                                               command=command,
-                                               python=get_python(),
-                                               setting="pylinter.settings",
-                                               project_dir=ROOT_DIR))
+    configs.append(DJANGO_Q_TEMPLATE.format(program='qcluster',
+                                            command='qcluster',
+                                            python=get_python(),
+                                            setting="pylinter.settings",
+                                            project_dir=ROOT_DIR))
+
     with open(supervisor_conf, "w") as f:
         f.write("\n\n".join(configs))
 if __name__ == "__main__":
