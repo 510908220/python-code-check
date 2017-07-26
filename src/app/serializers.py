@@ -2,6 +2,7 @@
 
 import json
 from datetime import date, datetime
+from django.conf import settings
 
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
@@ -23,25 +24,29 @@ class JobSerializer(serializers.ModelSerializer):
                   'recipient', 'violation_threshold_num', 'links', 'violation_info')
 
     def get_violation_info(self, obj):
-        last_build = obj.builds.last()
+        last_builds = obj.builds.order_by('-number')[:1]
         violation_info = {
             "violation_file_num": -1,
             'violation_num': -1,
-            'created': datetime.now(),
-            'health_url': '/static/img/rain.png'
+            'created': '0-0-0 0:0:0',
+            'health_url': '/static/img/rain.png',
+            'report_url': ''
         }
-        if not last_build:
+        if not last_builds:
             return violation_info
+        last_build = last_builds[0]
+        build_info = json.loads(last_build.result)
 
-        violation_info = json.loads(last_build.result).get('violation_info')
+        violation_info = build_info['violation_info']
         if violation_info['violation_num'] >= obj.violation_threshold_num:
             health_url = '/static/img/rain.png'
         else:
             health_url = '/static/img/sun.png'
 
         violation_info.update({
-            'created': last_build.created,
-            'health_url': health_url
+            'created': build_info['datetime'],
+            'health_url': health_url,
+            'report_url': settings.JENKINS_URL + '/job/{job_name}/violations/'.format(job_name=obj.name)
         })
 
         return violation_info

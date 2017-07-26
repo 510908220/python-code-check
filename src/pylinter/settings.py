@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'silk',
     'django_q',
+    'djmail',
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
@@ -44,8 +45,11 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -72,8 +76,21 @@ Q_CLUSTER = {
     'retry': 60 * 30,  # 30min 还未执行完就会再次触发任务
     'queue_limit': 50,
     'bulk': 10,
-    'orm': 'default'
+    'orm': 'default',
+    'catch_up': False  # 当由于某种原因导致scheduler未触发任务，中间漏掉的时间就忽略掉
 }
+
+# 邮件设置
+# XXX: 邮件服务得单独做一个服务，要不每份代码都这样，真累。DRY
+
+DEFAULT_FROM_EMAIL = '528194763@qq.com'
+
+DJMAIL_REAL_BACKEND = "djmail.backends.async.EmailBackend"
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '528194763'
+EMAIL_HOST_PASSWORD = 'vfyaasivgfjgbigc'
+EMAIL_USE_TLS = True
 
 ROOT_URLCONF = 'pylinter.urls'
 
@@ -120,14 +137,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'Zh-cn'
 
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
-
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -175,7 +191,7 @@ LOGGING = {
             'include_html': True,
         },
         'default': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(LOG_DIR, "default.log"),  # 日志输出文件
             'maxBytes': 1024 * 1024 * 5,  # 文件大小
@@ -189,12 +205,25 @@ LOGGING = {
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
+        },
+        'jenkins_handler': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, "jenkins.log"),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
         }
     },
     'loggers': {
         'django': {
             'handlers': ['default', 'error'],
-            'level': 'DEBUG',
+            'level': 'INFO',
+            'propagate': False
+        },
+        'jenkins': {
+            'handlers': ['jenkins_handler'],
+            'level': 'INFO',
             'propagate': False
         }
     }

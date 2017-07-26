@@ -1,27 +1,32 @@
 #-*- encoding: utf-8 -*-
 
 import json
+import logging
 
-
+from django.conf import settings
 from django.shortcuts import get_object_or_404
+from rest_framework import authentication, filters, permissions, viewsets
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
 
+from lintjenkins import LintJenkins
 from silk.profiling.profiler import silk_profile
 
-from rest_framework import viewsets, authentication, permissions, filters
-from rest_framework.pagination import PageNumberPagination
-from .models import Job, Build
-from .serializers import JobSerializer, BuildSerializer
+from .models import Build, Job
+from .serializers import BuildSerializer, JobSerializer
 
-from rest_framework.response import Response
+logger = logging.getLogger('django')
 
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 25
+    page_size = 1000
     page_size_query_param = 'page_size'
-    max_page_size = 100
-
+    max_page_size = 1001
+    # XXX: 暂时写死,后续前端再添加分页支持
 
 # Create your views here.
+
+
 class DefaultsMixin(object):
     authentication_classes = (
         authentication.BasicAuthentication,
@@ -46,6 +51,39 @@ class JobViewSet(DefaultsMixin, viewsets.ModelViewSet):
     filter_fields = ('name', )
     # 普通的字段匹配这样够了,如果需要实现高级匹配比如日期基于某个范围等,就需要定义自己的FilterSet类了
     # http://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
+
+    def perform_create(self, serializer):
+        serializer.save()
+        # 创建jenkins job
+        lint_jenkins = LintJenkins(settings.JENKINS_URL,
+                                   username=settings.JENKINS_USER,
+                                   password=settings.JENKINS_TOKEN)
+        job_info = serializer.data
+        logger.info(job_info)
+        try:
+            lint_jenkins.add_job(svn=job_info['svn_url'],
+                                 username=job_info['svn_username'],
+                                 password=job_info['svn_password'],
+                                 job_name=job_info['name'])
+        except Exception as e:
+            logger.exception(e)
+            Job.objects.filter(id=job_info['id']).delete()
+            raise Exception(e)
+
+        logger.info('create params:%s', serializer.data)
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            serializer.data.sort(key=lambda x: x['violation_info']['violation_num'], reverse=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        serializer.data.sort(key=lambda x: x['violation_info']['violation_num'], reverse=True)
+        return Response(serializer.data)
 
 
 class BuildViewSet(DefaultsMixin, viewsets.ModelViewSet):
@@ -80,7 +118,7 @@ class StatisticViewSet(viewsets.ViewSet):
             'violation_nums': [],
             'violation_file_nums': []
         }
-        builds = job.builds.order_by('-number')
+        builds = job.builds.order_by('-number')[:50]
         for build in builds:
             lint_result = json.loads(build.result)
             violation_num = lint_result['violation_info']['violation_num']
@@ -91,7 +129,7 @@ class StatisticViewSet(viewsets.ViewSet):
                 'violation_num_add': 0,
                 'violation_file_num': violation_file_num,
                 'violation_file_num_add': 0,
-                'created': build.created
+                'created': lint_result['datetime']
             })
             charts['labels'].append(build.number)
             charts['violation_nums'].append(violation_num)
@@ -108,7 +146,7 @@ class StatisticViewSet(viewsets.ViewSet):
         # STEP3:返回统计数据
 
         data = {
-            'job_name': job.name,
+            'created': '',
             'violation_num': 0,
             'violation_num_add': 0,
             'violation_file_num': 0,
@@ -118,6 +156,9 @@ class StatisticViewSet(viewsets.ViewSet):
             for k in data:
                 data[k] = rows[0].get(k)
         data['rows'] = rows
+        data['job_name'] = job.name
+
+        data['report_url'] = settings.JENKINS_URL + '/job/{job_name}/violations/'.format(job_name=job.name)
 
         # 图表按构建号升序显示
         for k in charts:

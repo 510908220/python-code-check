@@ -44,15 +44,15 @@ const routes = [
         name: 'Tasks',
         meta: {description: 'Tasks page in the form of a timeline'}
       }, {
-        path: 'setting',
+        path: 'guides',
         component: SettingView,
-        name: 'Settings',
-        meta: {description: 'User settings page'}
+        name: 'Guides',
+        meta: {description: ''}
       }, {
-        path: 'access',
+        path: 'examples',
         component: AccessView,
-        name: 'Access',
-        meta: {description: 'Example of using maps'}
+        name: 'Example',
+        meta: {description: ''}
       }, {
         path: 'server',
         component: ServerView,

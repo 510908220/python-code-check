@@ -10,15 +10,15 @@
       
     <li class="header">规范</li>
     <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/setting">
+      <router-link to="/guides">
         <i class="fa fa-book"></i>
-        <span class="page">python-guide</span>
+        <span class="page">python code style</span>
       </router-link>
     </li>
     <li class="pageLink" v-on:click="toggleMenu">
-      <router-link to="/setting">
+      <router-link to="/examples">
         <i class="fa fa-bug"></i>
-        <span class="page">例子</span>
+        <span class="page">example</span>
       </router-link>
     </li>
   </ul>

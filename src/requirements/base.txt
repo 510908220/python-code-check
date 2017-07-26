@@ -11,3 +11,5 @@ django-extensions
 django-silk
 lintjenkins
 django-cors-headers
+premailer
+djmail

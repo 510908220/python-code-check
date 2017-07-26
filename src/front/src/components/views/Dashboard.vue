@@ -3,6 +3,12 @@
   <section class="content">
     <!-- Info boxes -->
     <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <span class="bg-green">上一次检查时间:{{created}}</span>
+          </div>
+           
+    </div>
+    <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
           <span class="info-box-icon bg-aqua">
@@ -77,7 +83,7 @@
           <div class="box-body">
             <div class="col-sm-12 col-xs-12">
               <p class="text-center">
-                <strong>代码趋势</strong>
+               <a v-bind:href='report_url'  target="_blank"> <strong>{{job_name}}代码趋势</strong> </a>
               </p>
               <canvas id="trafficBar"></canvas>
             </div>
@@ -143,11 +149,14 @@ export default {
           label: '构建时间',
           field: 'created',
           type: 'date',
-          inputFormat: 'YYYYMMDD',
-          outputFormat: 'MMM Do YY'
+          inputFormat: 'YYYY-MM-DD HH:mm:ss',
+          outputFormat: 'YYYY-MM-DD HH:mm:ss'
         }
       ],
-      rows: []
+      rows: [],
+      job_name: '',
+      report_url: '',
+      created: ''
     }
   },
   computed: {},
@@ -164,6 +173,9 @@ export default {
           this.violation_num = this.response.violation_num
           this.violation_num_add = this.response.violation_num_add
           this.violation_file_num = this.response.violation_file_num
+          this.job_name = this.response.job_name
+          this.report_url = this.response.report_url
+          this.created = this.response.created
           this.violation_file_num_add = this.response.violation_file_num_add
 
           var ctx = document.getElementById('trafficBar').getContext('2d')

@@ -62,17 +62,7 @@
           <button type="button" class="btn btn-primary btn-sm" v-on:click="create_job">新建</button>
         </div>
         <div class="col-md-6">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">排序</label>
-              <div class="col-sm-10">
-                <select class="form-control">
-                  <option>文件数</option>
-                  <option>告警数</option>
-                </select>
-              </div>
-            </div>
-          </form>
+        
         </div>
       </div>
       <div class="row">
@@ -147,7 +137,8 @@ export default {
       svn_username: '',
       svn_password: '',
       recipient: '',
-      violation_threshold_num: 0
+      violation_threshold_num: 0,
+      timer: ''
     }
   },
   methods: {
@@ -235,6 +226,10 @@ export default {
   },
   mounted () {
     this.callGitHub()
+    this.timer = setInterval(this.callGitHub, 5000)
+  },
+  beforeDestroy () {
+    clearInterval(this.timer)
   }
 }
 </script>

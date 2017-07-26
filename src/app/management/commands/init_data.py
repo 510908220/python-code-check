@@ -12,7 +12,7 @@ class Command(BaseCommand):
         schedule('app.tasks.update_build_info',
                  name='update_build_info',
                  schedule_type=Schedule.MINUTES,
-                 minutes=1,
+                 minutes=10,
                  q_options={
                      'task_name': 'update_build_info'}
                  )

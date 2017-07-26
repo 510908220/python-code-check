@@ -1,7 +1,7 @@
 <template>
   <section class="content">
     <h1 class="text-center">Access</h1>
-    <h4 class="text-center">Where our users are coming from.</h4>
+
 
     <div class="row">
       <div class="col-md-12">

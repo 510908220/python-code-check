@@ -1,0 +1,150 @@
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+}
+
+table {
+  text-align: left;
+  line-height: 40px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid #ed1c40;
+  width: 500px;
+  margin: 50px auto;
+  border-radius: .25rem;
+}
+
+table[class='code'] {
+  text-align: left;
+  line-height: 40px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid black;
+  width: 500px;
+  margin: 50px auto;
+  border-radius: .25rem;
+}
+
+thead tr:first-child {
+  background: #ed1c40;
+  color: #fff;
+  border: none;
+}
+
+table[class='code']  > thead tr:first-child {
+  background: black;
+  color: #fff;
+  border: none;
+}
+
+th:first-child,
+td:first-child {
+  padding: 0 15px 0 20px;
+}
+
+thead tr:last-child th {
+  border-bottom: 3px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: rgba(237, 28, 64, .1);
+  cursor: default;
+}
+
+tbody tr:last-child td {
+  border: none;
+}
+
+tbody td {
+  border-bottom: 1px solid #ddd;
+}
+
+td:last-child {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.button {
+  color: #aaa;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.edit:hover {
+  color: #0a79df;
+}
+
+.delete:hover {
+  color: #dc2a2a;
+}
+
+
+h2.headertekst {
+  text-align: center;
+}
+</style>
+<h2 class="headertekst">
+    <a href='{{content.report_url}}'>#{{content.build_number}}</a>代码检查
+</h2>
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">代码告警</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr>
+      <td>告警数</td>
+      <td>{{content.violation_info.violation_num}}</td>
+      
+    </tr>
+    <tr>
+      <td>文件数</td>
+      <td>{{content.violation_info.violation_file_num}}</td>
+     
+    </tr>
+       <tr>
+      <td>检查时间</td>
+      <td>{{content.datetime}}</td>
+     
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="code">
+  <thead>
+    <tr>
+      <th colspan="2">{{commit.msg}} by {{commit.author}}</th>
+    </tr>
+    <tr>
+      <th>editType</th>
+      <th >File</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for path in commit.paths%}
+     <tr>
+      <td> {{path.editType}}</td>
+      <td> {{path.file}}</td>
+      
+    </tr>
+    {% endfor %}
+   
+   
+  </tbody>
+</table>
+
+{%endfor%}
+</html>
