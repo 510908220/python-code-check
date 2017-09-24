@@ -68,13 +68,15 @@ init-hook= 'import sys; sys.path.append("/var/lib/jenkins/workspace/job_name")'
 
 - DEBUG=True
 - DB_HOST=192.168.0.88
-- DB_PORT=32768
-- DB_NAME=lol
+- DB_PORT=3306
+- DB_NAME=pylinter
 - DB_PASSWORD=letmegoletmego
 - JENKINS_URL=http://x.x.x.x:8080
 - JENKINS_USER=admin
 - JENKINS_TOKEN=xxxxxxxxxx
 
+
+#### 修改`front\src\components\views\Dashboard.vue`和 `front\src\components\views\job.vue` 里url
 
 根据实际去修改对应的变量.
 

@@ -6,7 +6,7 @@ uwsgi
 MySQL-python
 mkdocs
 docopt
-django-q
+-e git+https://github.com/510908220/django-q#egg=django-q
 django-extensions
 django-silk
 lintjenkins

@@ -1,1 +1,1 @@
-CREATE DATABASE lol CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE pylinter CHARACTER SET utf8 COLLATE utf8_general_ci;
