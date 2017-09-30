@@ -111,7 +111,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      statistic_url: 'http://192.168.0.88/api/statistics/',
+      statistic_url: 'http:///10.5.2.5:8888/api/statistics/',
       response: null,
       violation_num: 0,
       violation_num_add: 0,

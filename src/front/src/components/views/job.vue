@@ -124,7 +124,7 @@ export default {
   components: { modal },
   data () {
     return {
-      job_url: 'http://192.168.0.88/api/jobs/',
+      job_url: 'http://10.5.2.5:8888/api/jobs/',
       response: null,
       error: null,
       showModal: false,

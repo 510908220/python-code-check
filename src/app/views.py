@@ -61,10 +61,10 @@ class JobViewSet(DefaultsMixin, viewsets.ModelViewSet):
         job_info = serializer.data
         logger.info(job_info)
         try:
-            lint_jenkins.add_job(svn=job_info['svn_url'],
-                                 username=job_info['svn_username'],
-                                 password=job_info['svn_password'],
-                                 job_name=job_info['name'])
+            lint_jenkins.add_job(svn=str(job_info['svn_url']),
+                                 username=str(job_info['svn_username']),
+                                 password=str(job_info['svn_password']),
+                                 job_name=str(job_info['name']))
         except Exception as e:
             logger.exception(e)
             Job.objects.filter(id=job_info['id']).delete()

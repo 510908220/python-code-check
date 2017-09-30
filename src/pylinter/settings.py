@@ -67,6 +67,11 @@ def SILKY_PERMISSIONS(user): return user.is_superuser
 
 SILKY_META = True
 SILKY_PYTHON_PROFILER = True
+SILKY_MAX_REQUEST_BODY_SIZE = -1  # Silk takes anything <0 as no limit
+SILKY_MAX_RESPONSE_BODY_SIZE = 1024  # If response body>1024kb, ignore
+
+
+SILKY_MAX_RECORDED_REQUESTS = 1000  # 限制记录数，避免数据库持续增长
 
 # Django Q config
 Q_CLUSTER = {
@@ -83,13 +88,13 @@ Q_CLUSTER = {
 # 邮件设置
 # XXX: 邮件服务得单独做一个服务，要不每份代码都这样，真累。DRY
 
-DEFAULT_FROM_EMAIL = '528194763@qq.com'
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 DJMAIL_REAL_BACKEND = "djmail.backends.async.EmailBackend"
-EMAIL_HOST = 'smtp.qq.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = '528194763'
-EMAIL_HOST_PASSWORD = 'vfyaasivgfjgbigc'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 ROOT_URLCONF = 'pylinter.urls'
@@ -160,7 +165,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         "HOST": os.environ['DB_HOST'],
         'PORT': os.environ['DB_PORT'],
-        'USER': 'root',
+        'USER': os.environ['DB_USER'],
         "PASSWORD": os.environ['DB_PASSWORD'],
         'NAME': os.environ['DB_NAME'],
         'TEST': {'CHARSET': 'UTF8'}
