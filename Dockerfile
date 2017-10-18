@@ -14,6 +14,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         python-dev \
          python-pip \
         nginx \
+        git \
         supervisor \
         sqlite3 \
         python-mysqldb \
@@ -30,8 +31,8 @@ RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 # 设置阿里云pypi源,加快下载速度
 COPY  ./config/pip/pip.conf /root/.pip/pip.conf
 # 更新PIP并且清除整个缓存保证pip是最新的
-RUN pip install -U pip
-RUN hash -r
+# RUN pip install -U pip
+# RUN hash -r
 
 # setup all the configfiles
 # RUN echo "daemon off;" >> /etc/nginx/nginx.conf
@@ -42,7 +43,7 @@ COPY ./src/  /docker/src/
 
 # COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
 # to prevent re-installinig (all your) dependencies when you made a change a line or two in your app.
-RUN pip install -r /docker/src/requirements/dev.txt
+RUN pip install -r /docker/src/requirements/prod.txt
 
 RUN export TERM=xterm # 会出现错误TERM environment variable not set
 

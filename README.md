@@ -6,7 +6,7 @@
 - 代码告警通知, **及时发现代码问题**.
   ​
 
-总之,一切是为了高进代码质量.
+总之,一切是为了改进代码质量.
 
 
 
@@ -42,15 +42,39 @@
 
 ## Jenkins设置
 
-- 升级插件`Credentials Plugin`到新版本（2.1.14）
+
+
+使用`docker`方式启动一个`jenkins`, 或者手动下载.
+
+
+
+#### 镜像构建
+
+- `cd jenkins&&docker build -t jenkins:pylint  .`
+- `docker run -d --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home jenkins:pylint`
+
+#### 插件
+
+国内网络慢,可以手动安装将各个插件拷贝到`/var/jenkins_home/plugins`,然后再界面上安装.
+
+- `Credentials Plugin`
 - `Violations plugin`
 - `Subversion Plug-in`
 
 
 
-## 待检查项目设置
 
-检查时需要有代码引用包的环境,所以需要在项目根目录增加一个`requirements.txt`和`pylint.cfg`文件.
+#### 其他设置:
+
+- `Configure Global Security`-->`CSRF Protection`取消打钩
+- `Configure Global Security`--> `访问控制`-->`授权策略`-->`登录用户可以做任何事`--> `Allow anonymouse read access`
+
+
+**注意:  如果安装的一些`pip`包依赖于操作系统,可以现在jenkins上安装. **
+
+## 接入检查项目设置
+
+检查时需要有代码引用包的环境,所以需要在项目根目录(界面上svn填写地址对应的目录)增加一个`requirements.txt`和`pylint.cfg`文件.
 
 其中`pylint.cfg`里需要修改一下`init-hook=`这句为:
 
@@ -58,25 +82,34 @@
 init-hook= 'import sys; sys.path.append("/var/lib/jenkins/workspace/job_name")'
 ```
 
+`pylint.cfg`使用`pylint --generate-rcfile > pylint.cfg`生成
 
 
-## 工具部署
 
+## 代码部署
 
+ 
 
 #### 修改`docker-compose.yml`里`environment`:
 
-- DEBUG=True
-- DB_HOST=192.168.0.88
-- DB_PORT=3306
+- DB_HOST=10.5.2.5
+- DB_PORT=33066
 - DB_NAME=pylinter
-- DB_PASSWORD=letmegoletmego
-- JENKINS_URL=http://x.x.x.x:8080
+- DB_USER=root
+- DB_PASSWORD=!@#$ESZAQ
+
+- DEFAULT_FROM_EMAIL = '528194763@qq.com'
+- EMAIL_HOST = 'smtp.qq.com'
+- EMAIL_PORT = 587
+- EMAIL_HOST_USER = '528194763'
+- EMAIL_HOST_PASSWORD = 'vfyaasivgfjgbigc'
+
+- JENKINS_URL=http://10.5.2.5:8080
 - JENKINS_USER=admin
-- JENKINS_TOKEN=xxxxxxxxxx
+- JENKINS_TOKEN=b81bba48120b4441d8af54b485f690b9
 
 
-#### 修改`front\src\components\views\Dashboard.vue`和 `front\src\components\views\job.vue` 里url
+#### 修改`front\src\components\views\Dashboard.vue`和 `front\src\components\views\job.vue` 里url指向服务器地址
 
 根据实际去修改对应的变量.
 
@@ -88,6 +121,14 @@ init-hook= 'import sys; sys.path.append("/var/lib/jenkins/workspace/job_name")'
 docker-compose build && docker-compose up 
 ```
 
+#### 创建定时任务
+
+```bash
+docker exec -it pythoncodecheck_web_1 python manage.py init_data
+```
 
 
 
+## 说明
+
+web界面现在未提供删除功能,可以创建一个`django`管理员账号,登陆到`admin`页面就行删除操作.
